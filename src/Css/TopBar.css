@@ -1,0 +1,24 @@
+.topbar {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar {
+    padding: 0.8rem 1rem;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.nav-link:hover {
+    color: #e8f5e9 !important; /* Slightly lighter green */
+}
+
+.dropdown-menu {
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
