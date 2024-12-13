@@ -1,0 +1,142 @@
+/* Basic styling for the component */
+.top-brands {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0f4f7;
+    position: relative;
+  }
+  
+  .top-brands h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Horizontal layout for brand icons */
+  .brands-row {
+    display: flex;
+    justify-content: space-evenly; /* Equal space between items */
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Each brand icon's container */
+  .brand-icon-container {
+    display: inline-block;
+    animation: bounce 1.5s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Styling for brand icons (circle and size increased) */
+  .brand-icon {
+    width: 100px; /* Increased size */
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Bounce animation for up and down */
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Up and down bounce sequence */
+  .brand-icon-container.up {
+    animation-name: bounce-up;
+  }
+  
+  .brand-icon-container.down {
+    animation-name: bounce-down;
+  }
+  
+  /* Bounce up and down for different directions */
+  @keyframes bounce-up {
+    0%, 50%, 100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-15px);
+    }
+    75% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounce-down {
+    0%, 50%, 100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(15px);
+    }
+    75% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Wave line connecting the icons */
+  .wave-line {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+    background-size: 200% 100%;
+    animation: wave 3s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0% {
+      background-position: 200% 50%;
+    }
+    50% {
+      background-position: 0 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .brand-icon {
+      width: 80px;
+      height: 80px;
+    }
+    .top-brands h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .brand-icon {
+      width: 60px;
+      height: 60px;
+    }
+    .top-brands h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

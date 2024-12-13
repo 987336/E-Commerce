@@ -1,41 +1,43 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "./Context/CartContext"; // Import the CartContext
+import { toast, ToastContainer } from "react-toastify"; // Import toast
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import { CartContext } from "./Context/CartContext";
 
 function Cart() {
-    const { cart, removeFromCart, updateQuantity } = useContext(CartContext); // Use context to access cart data
+    const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
 
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-    const [isLoading, setIsLoading] = useState(false); // State to control loading spinner
-    const [paymentStatus, setPaymentStatus] = useState(null); // State for tracking payment status
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    // Calculate total price and total quantity
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
-    // Simulate Checkout Handler
     const handleCheckout = () => {
-        setIsModalOpen(true); // Show the modal when the checkout button is clicked
+        setIsModalOpen(true);
     };
 
-    // Simulate payment confirmation
     const confirmPayment = () => {
-        setIsLoading(true);   // Start the loading spinner
+        setIsLoading(true);
 
-        // Simulate a 3-second delay (loading state)
         setTimeout(() => {
-            setIsLoading(false); // Hide loading spinner after 3 seconds
+            setIsLoading(false);
             const isPaymentSuccessful = Math.random() > 0.2; // Simulate 80% success rate
 
             if (isPaymentSuccessful) {
-                setPaymentStatus("Payment Successful! Total: $" + totalPrice);
-                setIsModalOpen(false); // Close modal on success
+                toast.success(`Payment Successful! Total: $${totalPrice}`, {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+                setIsModalOpen(false);
             } else {
-                setPaymentStatus("Payment Failed. Please try again.");
+                toast.error("Payment Failed. Please try again.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
             }
         }, 3000);
     };
 
-    // Empty Cart Message
     if (cart.length === 0) {
         return (
             <div className="container text-center my-5">
@@ -52,7 +54,6 @@ function Cart() {
         <div className="container my-5">
             <h2 className="mb-4">Shopping Cart</h2>
             <div className="row">
-                {/* Cart Items */}
                 <div className="col-lg-8">
                     <ul className="list-group">
                         {cart.map((item) => (
@@ -109,8 +110,6 @@ function Cart() {
                         ))}
                     </ul>
                 </div>
-
-                {/* Cart Summary */}
                 <div className="col-lg-4">
                     <div className="card shadow-sm">
                         <div className="card-body">
@@ -126,7 +125,7 @@ function Cart() {
                             </p>
                             <hr />
                             <button
-                                onClick={handleCheckout} // Trigger the checkout process
+                                onClick={handleCheckout}
                                 className="btn btn-primary btn-lg w-100 mt-3"
                             >
                                 Proceed to Checkout
@@ -142,7 +141,6 @@ function Cart() {
                 </div>
             </div>
 
-            {/* Payment Confirmation Modal */}
             {isModalOpen && (
                 <div className="modal fade show" style={{ display: "block" }} onClick={() => setIsModalOpen(false)}>
                     <div
@@ -168,7 +166,6 @@ function Cart() {
                                 </button>
                             </div>
                             <div className="modal-body text-center">
-                                {/* Show loading spinner while processing */}
                                 {isLoading ? (
                                     <>
                                         <div className="spinner-border text-primary" role="status">
@@ -186,10 +183,7 @@ function Cart() {
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
-                                    onClick={() => {
-                                        setPaymentStatus("Payment Canceled");
-                                        setIsModalOpen(false);
-                                    }}
+                                    onClick={() => setIsModalOpen(false)}
                                 >
                                     Cancel
                                 </button>
@@ -208,16 +202,8 @@ function Cart() {
                 </div>
             )}
 
-            {/* Payment Status Message */}
-            {paymentStatus && (
-                <div
-                    className={`alert alert-${paymentStatus.includes("Successful") ? "success" : "danger"} mt-4`}
-                    role="alert"
-                >
-                    <h5>{paymentStatus.includes("Successful") ? "Success!" : "Error!"}</h5>
-                    <p>{paymentStatus}</p>
-                </div>
-            )}
+            {/* Toast Notification */}
+            <ToastContainer />
         </div>
     );
 }

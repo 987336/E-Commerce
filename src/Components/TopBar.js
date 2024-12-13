@@ -25,6 +25,11 @@ function Topbar() {
         fontWeight: "500",
     };
 
+    const togglerStyle = {
+        border: "none",
+        color: "#fff", // White color for the hamburger icon
+    };
+
     return (
         <div className="topbar" style={topBarStyle}>
             <nav className="navbar navbar-expand-lg">
@@ -48,33 +53,33 @@ function Topbar() {
                         aria-controls="navbarContent"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
+                        style={togglerStyle}
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" style={{ backgroundColor: "#fff" }}></span>
                     </button>
 
                     {/* Collapsible Content */}
-                    <div
-                        className="collapse navbar-collapse"
-                        id="navbarContent"
-                    >
-                        <div className="d-flex flex-column flex-lg-row w-100 align-items-center">
-                            {/* Search Bar (Centered for all screen sizes) */}
-                            <form className="d-flex flex-grow-1 justify-content-center my-2 my-lg-0">
-                                <div className="input-group" style={{ maxWidth: "600px", width: "100%" }}>
-                                    <input
-                                        className="form-control"
-                                        type="search"
-                                        placeholder="Search products..."
-                                        aria-label="Search"
-                                    />
-                                    <button className="btn btn-light" type="submit">
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </button>
-                                </div>
-                            </form>
+                    <div className="collapse navbar-collapse" id="navbarContent">
+                        {/* Centered Search Bar */}
+                        <form
+                            className="d-flex flex-grow-1 justify-content-center my-2 my-lg-0"
+                        >
+                            <div className="input-group" style={{ maxWidth: "600px", width: "100%" }}>
+                                <input
+                                    className="form-control"
+                                    type="search"
+                                    placeholder="Search products..."
+                                    aria-label="Search"
+                                />
+                                <button className="btn btn-light" type="submit">
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </button>
+                            </div>
+                        </form>
 
-                            {/* Right Aligned Links */}
-                            <div className="d-flex align-items-center mt-2 mt-lg-0">
+                        {/* Right Aligned Links */}
+                        <ul className="navbar-nav ms-auto d-flex align-items-center">
+                            <li className="nav-item">
                                 <Link
                                     className="nav-link d-flex align-items-center me-3"
                                     to={"/cart"}
@@ -83,45 +88,45 @@ function Topbar() {
                                     <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
                                     Cart
                                 </Link>
-                                <div className="nav-item dropdown">
-                                    <a
-                                        className="nav-link dropdown-toggle d-flex align-items-center"
-                                        href="#"
-                                        id="accountDropdown"
-                                        role="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                        style={linkStyle}
-                                    >
-                                        <FontAwesomeIcon icon={faUserCircle} className="me-2" />
-                                        Account
-                                    </a>
-                                    <ul
-                                        className="dropdown-menu dropdown-menu-end"
-                                        aria-labelledby="accountDropdown"
-                                    >
-                                        <li>
-                                            <Link className="dropdown-item" to={"/profile"}>
-                                                Profile
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link className="dropdown-item" to={"/orders"}>
-                                                Orders
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <hr className="dropdown-divider" />
-                                        </li>
-                                        <li>
-                                            <Link className="dropdown-item" to={"/logout"}>
-                                                Logout
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle d-flex align-items-center"
+                                    href="#"
+                                    id="accountDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    style={linkStyle}
+                                >
+                                    <FontAwesomeIcon icon={faUserCircle} className="me-2" />
+                                    Account
+                                </a>
+                                <ul
+                                    className="dropdown-menu dropdown-menu-end"
+                                    aria-labelledby="accountDropdown"
+                                >
+                                    <li>
+                                        <Link className="dropdown-item" to={"/profile"}>
+                                            Profile
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to={"/orders"}>
+                                            Orders
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to={"/logout"}>
+                                            Logout
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

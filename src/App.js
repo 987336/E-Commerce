@@ -9,6 +9,10 @@ import Electronics from "./Components/CategoryComponents/Electronics";
 import Cart from "./Components/Cart";
 import SuccessPage from "./Components/SuccessPage";
 import CancelPage from "./Components/CancelPage";
+import TopBrands from "./Components/TopBrands";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 // import {TestComp} from "./Components/Test";
 import { CartProvider } from "./Components/Context/CartContext";
 const data = createContext();
@@ -80,6 +84,8 @@ function App() {
                 {/* <TestComp /> */}
 
                             <Category />
+                    <TopBrands />
+
                         </>} />
 
                         {/* Electronics Page */}
@@ -91,6 +97,7 @@ function App() {
                         {/* Product Details Page */}
                         <Route path="/product/:id" element={<ProductDetails />} />
                     </Routes>
+
                     <Footer />
                 </Router>
             </data3Storts.Provider>

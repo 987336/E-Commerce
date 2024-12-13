@@ -1,29 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Carousel, Card, Button, Row, Col } from 'react-bootstrap';
 import '../../Css/TopProduct.css';  // Add this CSS file for styling
 
 // Sample product data with real product names and descriptions
 const products = [
-  { "id": 1, "name": "Apple iPhone 15", "description": "The latest iPhone with A17 chip, 5G support, and enhanced camera system.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$999" },
-  { "id": 2, "name": "Samsung Galaxy S23", "description": "Powerful smartphone with Snapdragon 8 Gen 2, AMOLED screen, and pro-grade cameras.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$899" },
-  { "id": 3, "name": "Sony PlayStation 5", "description": "Next-gen gaming console with stunning 4K graphics and fast load times.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$499" },
-  { "id": 4, "name": "MacBook Pro 14-inch", "description": "Powerful laptop with Apple M2 Pro chip, 16GB RAM, and 512GB SSD.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$1999" },
-  { "id": 5, "name": "Dell XPS 13", "description": "Ultra-thin laptop with Intel Core i7 processor and 16GB RAM.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$1299" },
-  { "id": 6, "name": "LG OLED TV 55-inch", "description": "Stunning OLED display with 4K resolution, perfect for gaming and movie nights.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$1500" },
-  { "id": 7, "name": "Bose QuietComfort 45", "description": "Noise-cancelling headphones with superior sound quality and comfortable fit.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$329" },
-  { "id": 8, "name": "GoPro HERO 11", "description": "Action camera with HyperSmooth stabilization, 5.3K video, and 23MP photos.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$399" },
-  { "id": 9, "name": "Apple Watch Series 8", "description": "Smartwatch with ECG, blood oxygen monitoring, and fitness tracking features.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$399" },
-  { "id": 10, "name": "Samsung Galaxy Tab S8", "description": "Android tablet with high-resolution screen and S Pen support for creative tasks.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$649" },
-  { "id": 11, "name": "Canon EOS R6", "description": "Full-frame mirrorless camera with 20fps burst shooting and 4K video.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$2499" },
-  { "id": 12, "name": "Nintendo Switch OLED", "description": "Portable gaming system with OLED screen, enhanced audio, and game storage.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$349" },
-  { "id": 13, "name": "Fitbit Charge 5", "description": "Fitness tracker with GPS, heart rate monitoring, and sleep tracking.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$129" },
-  { "id": 14, "name": "JBL Flip 6", "description": "Portable Bluetooth speaker with deep bass, waterproof design, and up to 12 hours of playtime.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$129" },
-  { "id": 15, "name": "Microsoft Surface Laptop 4", "description": "Laptop with Intel Core i5 processor, 8GB RAM, and 256GB SSD, sleek and powerful.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$999" },
-  { "id": 16, "name": "HP Spectre x360", "description": "Convertible laptop with Intel Core i7 processor, 16GB RAM, and 512GB SSD.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$1399" },
-  { "id": 17, "name": "Sony WH-1000XM5", "description": "Noise-canceling over-ear headphones with superior sound and long battery life.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$399" },
-  { "id": 18, "name": "Apple AirPods Pro 2", "description": "True wireless earbuds with active noise cancellation, transparency mode, and spatial audio.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$249" },
-  { "id": 19, "name": "Dyson V15 Detect", "description": "Cordless vacuum cleaner with laser illumination and up to 60 minutes of runtime.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$699" },
-  { "id": 20, "name": "Philips Sonicare HX9903", "description": "Smart electric toothbrush with pressure sensor and multiple modes for healthier gums.", "imageUrl": "https://via.placeholder.com/400x300", "price": "$299" }
+  { id: 1, name: "Smartphone", price: 699, description: "Latest 5G smartphone." , image:"https://images.unsplash.com/photo-1603184017968-953f59cd2e37?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { id: 2, name: "Laptop", price: 1099, description: "High-performance laptop.", image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { id: 3, name: "Smartwatch", price: 249, description: "Feature-packed smartwatch.", image:"https://plus.unsplash.com/premium_photo-1728249572934-f56a637a92a4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { id: 4, name: "Casual T-Shirt", price: 29, description: "Comfortable cotton T-shirt.", image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { id: 5, name: "Leather Jacket", price: 199, description: "Premium leather jacket.", image :"https://plus.unsplash.com/premium_photo-1661313817350-1fa759c43a3b?q=80&w=3017&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  {
+    id: 6,
+    name: "Football",
+    price: 25,
+    image:"https://images.unsplash.com/photo-1486286701208-1d58e9338013?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Durable and high-quality football for outdoor games.",
+},
+{
+    id: 7,
+    name: "Yoga Mat",
+    price: 20,
+    image:"https://plus.unsplash.com/premium_photo-1675155952889-abb299df1fe7?q=80&w=2829&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Non-slip yoga mat with cushioning for a comfortable workout.",
+},
+{
+    id: 8,
+    name: "Tennis Racket",
+    price: 79,
+    image:"https://images.unsplash.com/photo-1599280174407-fdc3e8c47856?q=80&w=2936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Lightweight tennis racket with a sturdy frame and excellent grip.",
+},
+{
+    id: 9,
+    name: "Basketball",
+    price: 30,
+    image:"https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Official size and weight basketball with superior grip.",
+},
+{
+    id: 10,
+    name: "Running Shoes",
+    price: 89,
+    image:"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Breathable and lightweight running shoes with excellent support.",
+},
 ];
 
 const TopProductCarousel = () => {
@@ -46,12 +67,14 @@ const TopProductCarousel = () => {
               {group.map((product) => (
                 <Col xs={12} sm={6} md={4} lg={4} key={product.id} className="mb-4">
                   <Card className="product-card">
-                    <Card.Img variant="top" src={product.imageUrl} />
+                    <Card.Img variant="top" src={product.image} />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text><strong>{product.price}</strong></Card.Text>
-                      <Button variant="primary">Buy Now</Button>
+                      <Button variant="primary"><Link to={`/product/${product.id}`} className="btn btn-primary">
+                                        Buy Now
+                                    </Link></Button>
                     </Card.Body>
                   </Card>
                 </Col>
